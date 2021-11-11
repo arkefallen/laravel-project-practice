@@ -42,4 +42,16 @@ Route::get('/book/search','BookController@search')->name('book.search');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user','UsersController@index');
+Route::get('/user','UsersController@index')->name('user');
+
+Route::get('/user/create','UsersController@create')->name('user.create');
+
+Route::post('/user','UsersController@store')->name('user.store');
+
+Route::post('/user/delete/{id}','UsersController@destroy')->name('user.destroy');
+
+Route::get('/user/edit/{id}','UsersController@edit')->name('user.edit');
+
+Route::post('/user/{id}','UsersController@update')->name('user.update');
+
+Route::get('/user/search','UsersController@search')->name('user.search');

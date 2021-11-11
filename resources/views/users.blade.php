@@ -17,38 +17,36 @@
         </div>
     @endif
     <div class="container">
-        <h1>Cari Buku Favorit Anda</h1>
-        <form action="{{ route('book.search') }}" method="get">
+        <h1>Kelola User</h1>
+        <form action="{{ route('user.search') }}" method="get">
             @csrf
-            <input type="text" name="sentence" class="form-control" placeholder="Ketikkan buku yang anda cari disini..." style="width: 100%; display:inline; margin-top:10px; margin-bottom:20px;">
+            <input type="text" name="sentence" class="form-control" placeholder="Ketikkan user yang anda cari disini..." style="width: 100%; display:inline; margin-top:10px; margin-bottom:20px;">
         </form>
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Price</th>
-                    <th>Publish Date</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Level</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($bookData as $book)
+                @foreach($usersData as $user)
                 <tr>
                     <td>{{++$num}}</td>
-                    <td>{{$book->title}}</td>
-                    <td>{{$book->author}}</td>
-                    <td>{{number_format($book->price, 0, ',','.')}}</td>
-                    <td>{{$book->published_date->format('d/m/Y')}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->level}}</td>
                     <td style="display: flex; flex-direction:row;">
-                        <form  action="{{ route('book.destroy',$book->id) }}" method="post">
+                        <form  action="{{ route('user.destroy',$user->id) }}" method="post">
                             @csrf
-                            <button class="btn btn-danger" onclick="return confirm('Are you sure about that ?')">
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure about that ?')" style="margin-right: 20px">
                             Remove
                             </button>
                         </form>
-                        <form  action="{{ route('book.edit', $book->id ) }}" method="get">
+                        <form  action="{{ route('user.edit', $user->id ) }}" method="get">
                             @csrf
                             <button class="btn btn-secondary">Edit</button>
                         </form>
@@ -57,11 +55,10 @@
                 @endforeach
             </tbody>
         </table>
-        <p>Buku yang ada sebanyak : {{$totalBooks}}</p>
-        <p>Jumlah harga semua buku : {{$totalPrice}}</p>
-        <a href="{{ route('book.create') }}">
-            <button class="btn btn-primary">Add Book</button>
+        <p>Jumlah User : {{$totalUsers}}</p>
+        <a href="{{ route('user.create') }}">
+            <button class="btn btn-primary">Add User</button>
         </a>
-        <div style="margin-top : 20px;">{{ $bookData->links() }}</div>
+        <div style="margin-top : 20px;">{{ $usersData->links() }}</div>
     </div>
 @endsection
