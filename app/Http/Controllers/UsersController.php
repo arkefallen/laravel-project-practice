@@ -5,21 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Middleware\Authenticate;
 
-class CityController extends Controller
+class UsersController extends Controller
 {
     public function __construct()
     {   
         $this->middleware('auth');
+        $this->middleware('admin');
     }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function heading()
+    public function index()
     {
-        return view("city");
+        //
     }
 
     /**

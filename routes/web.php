@@ -41,3 +41,5 @@ Route::post('/book/{id}','BookController@edit')->name('book.update');
 Route::get('/book/search','BookController@search')->name('book.search');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/user','UsersController@index');

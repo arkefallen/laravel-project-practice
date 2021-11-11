@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Middleware\Authenticate;
 
 class BookController extends Controller
 {
