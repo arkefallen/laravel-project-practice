@@ -83,12 +83,10 @@ class UsersController extends Controller
             'name' => 'required|string',
             'email' => 'required|string',
             'level' => 'required|string',
-            'password' => 'required|string',
         ]);
         $users = User::find($id);
         $users->name = $req->name;
         $users->email = $req->email;
-        $users->password = $req->password;
         $users->level = $req->level;
         $users->update();
         return redirect('/user')->with('msg_success_update','Successfully updating a data');

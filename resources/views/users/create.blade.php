@@ -37,7 +37,7 @@
                 </tbody>
             </table>
             <div style="margin : 20px 0px 10px 0px;">
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-primary" type="submit">Simpan</button>
                 @if (count($errors) > 0)
                     <ul class="alert alert-danger" style="margin-top: 20px;">
                         @foreach ($errors->all() as $error)
@@ -46,7 +46,7 @@
                     </ul>
                 @endif
             </div>
-            <a href="{{ route('user') }}">Cancel</a>
+            <a href="{{ route('user') }}">Kembali</a>
         </form>
     </div>
 @endsection

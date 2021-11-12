@@ -43,12 +43,12 @@
                         <form  action="{{ route('user.destroy',$user->id) }}" method="post">
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Are you sure about that ?')" style="margin-right: 20px">
-                            Remove
+                            Hapus
                             </button>
                         </form>
                         <form  action="{{ route('user.edit', $user->id ) }}" method="get">
                             @csrf
-                            <button class="btn btn-secondary">Edit</button>
+                            <button class="btn btn-secondary">Ubah</button>
                         </form>
                     </td>
                 </tr>
@@ -57,7 +57,7 @@
         </table>
         <p>Jumlah User : {{$totalUsers}}</p>
         <a href="{{ route('user.create') }}">
-            <button class="btn btn-primary">Add User</button>
+            <button class="btn btn-primary">Tambah User</button>
         </a>
         <div style="margin-top : 20px;">{{ $usersData->links() }}</div>
     </div>
