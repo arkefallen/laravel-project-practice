@@ -44,7 +44,7 @@
                     <td style="display: flex; flex-direction:row;">
                         <form  action="{{ route('book.destroy',$book->id) }}" method="post">
                             @csrf
-                            <button class="btn btn-danger" onclick="return confirm('Are you sure about that ?')">
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure about that ?')" style="margin-right: 20px">
                             Remove
                             </button>
                         </form>
