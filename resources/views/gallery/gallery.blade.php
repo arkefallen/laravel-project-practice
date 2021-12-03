@@ -2,17 +2,17 @@
 
 @section('content')
     @if(Session::has('msg_success_store'))
-        <div class="alert alert-success">
+        <div class="container alert alert-success">
             {{Session::get('msg_success_store')}}
         </div>
     @endif
     @if(Session::has('msg_success_update'))
-        <div class="alert alert-success">
+        <div class="container alert alert-success">
             {{Session::get('msg_success_update')}}
         </div>
     @endif
     @if(Session::has('msg_success_remove'))
-        <div class="alert alert-success">
+        <div class="container alert alert-success">
             {{Session::get('msg_success_remove')}}
         </div>
     @endif

@@ -17,7 +17,7 @@
         </div>
     @endif
     <div class="container">
-        <h1>Cari Buku Favorit Anda</h1>
+        <h1>Kelola Buku</h1>
         <form action="{{ route('book.search') }}" method="get">
             @csrf
             <input type="text" name="sentence" class="form-control" placeholder="Ketikkan buku yang anda cari disini..." style="width: 100%; display:inline; margin-top:10px; margin-bottom:20px;">
@@ -61,6 +61,9 @@
         <p>Jumlah harga semua buku : {{$totalPrice}}</p>
         <a href="{{ route('book.create') }}">
             <button class="btn btn-primary">Add Book</button>
+        </a>
+        <a href="{{ route('book.list') }}">
+            <button class="btn btn-warning">Open Book List</button>
         </a>
         <div style="margin-top : 20px;">{{ $bookData->links() }}</div>
     </div>

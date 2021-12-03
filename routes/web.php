@@ -42,7 +42,15 @@ Route::post('/book/{id}','BookController@edit')->name('book.update');
 
 Route::get('/book/search','BookController@search')->name('book.search');
 
+Route::get('/book/list','BookController@bookGallery')->name('book.list');
+
+Route::get('/book/list/{title}','BookController@bookGalleries')->name('book.gallery');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/book/list/like/{id}','BookController@like')->name('book.like');
+
+Route::post('/book/list/{id}','BookController@comment')->name('book.comment');
 
 // Users CRUD
 
@@ -72,4 +80,6 @@ Route::post('/gallery/delete/{id}','GalleryController@destroy')->name('gallery.d
 
 Route::get('/gallery/edit/{id}','GalleryController@edit')->name('gallery.edit');
 
-Route::post('/gallery/{id}','GalleryController@update')->name('gallery.update');
+Route::post('/gallery/update/{id}','GalleryController@update')->name('gallery.update');
+
+Route::post('/gallery/{id}','GalleryController@comment')->name('gallery.comment');

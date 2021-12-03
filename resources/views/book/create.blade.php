@@ -7,8 +7,8 @@
         </div>
     </header> --}}
     <div class="container">
-        <h1>Add New Book</h1>
-        <form class="form" action="{{ route('book.store') }}" method="post">
+        <h1>Tambah Buku Baru</h1>
+        <form class="form" action="{{ route('book.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <table class="table">
                 <tbody>
@@ -34,6 +34,12 @@
                         <td>Published Date</td>
                         <td>
                             <input type="date" name="published_date" class="date form-control" placeholder="yyyy/mm/dd">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Upload Foto Cover</td>
+                        <td>
+                            <input type="file" name="photo" class="form-control">
                         </td>
                     </tr>
                 </tbody>

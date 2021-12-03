@@ -10,6 +10,11 @@ use Image;
 
 class GalleryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +64,7 @@ class GalleryController extends Controller
         $image = $req->image;
         $imgFile = time().'.'.$image->getClientOriginalExtension();
 
-        Image::make($image)->resize(200,150)->save('assets/img/'.$imgFile);
+        Image::make($image)->save('assets/img/'.$imgFile);
         $image->move('images/'.$imgFile);
 
         $gallery->image = $imgFile;
@@ -89,7 +94,7 @@ class GalleryController extends Controller
     {
         $gallery = Gallery::find($id);
         $books = Book::all();
-        
+
         return view('gallery.edit', compact('gallery','books'));
     }
 
@@ -100,9 +105,27 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
-        //
+        $this->validate($req, [
+            'gallery_name' => 'required',
+            'description' => 'required',
+            'book_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,jpg,png'
+        ]);
+        $gallery = Gallery::find($id);
+        $gallery->gallery_name = $req->gallery_name;
+        $gallery->description = $req->description;
+        $gallery->book_id = $req->book_id;
+
+        $image = $req->image;
+        $imgFile = time().'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(200,150)->save('assets/img/'.$imgFile);
+        $image->move('images/'.$imgFile);
+        $gallery->image = $imgFile;
+
+        $gallery->update();
+        return redirect('/gallery')->with('msg_success_update','Successfully updating a data');
     }
 
     /**
@@ -113,6 +136,8 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        $gallery->delete();
+        return redirect('/gallery')->with('msg_success_remove','Successfully removing a data');
     }
 }
